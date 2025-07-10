@@ -1,0 +1,85 @@
+.repo-section {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.repo-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #000 !important;
+  margin-top: 10vh;
+}
+
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pagination-button {
+  padding: 0.5rem 1rem;
+  background-color: #2d72d9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.pagination-info {
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.app-container.dark .pagination-info {
+  color: #ddd;
+}
+
+.app-container.dark .pagination-button {
+  background-color: #3a80e0;
+}
+
+.app-container.dark .pagination-button:disabled {
+  background-color: #555;
+}
+
+
+@media (max-width: 500px) {
+  .repo-title {
+    font-size: 1.3rem;
+  }
+
+  .repo-grid {
+    gap: 1rem;
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

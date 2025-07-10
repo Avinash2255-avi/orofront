@@ -1,0 +1,244 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease;
+}
+
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.search-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #2d72d9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #1a5bb8;
+}
+
+
+.dark-toggle-button {
+  display: block;
+  margin: 0 auto 2rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dark-toggle-button:hover {
+  background-color: #666;
+}
+
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode a {
+  color: #90caf9;
+}
+
+body.dark-mode .app-container {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .title {
+  color: #e0e0e0;
+}
+
+body.dark-mode .search-input {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark-mode .search-button {
+  background-color: #3a80e0;
+  color: #fff;
+}
+
+body.dark-mode .search-button:hover {
+  background-color: #2c64c9;
+}
+
+body.dark-mode .dark-toggle-button {
+  background-color: #666;
+}
+
+body.dark-mode .dark-toggle-button:hover {
+  background-color: #888;
+}
+
+
+
+
+.repo-title {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem;
+  text-align: center;
+  color: #333;
+}
+
+body.dark-mode .repo-title {
+  color: #ddd;
+}
+
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+
+.repo-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.repo-name {
+  font-weight: bold;
+  color: #2d72d9;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.repo-description {
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  color: #555;
+  flex-grow: 1;
+}
+
+.repo-stars {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: auto;
+}
+
+
+body.dark-mode .repo-card {
+  background-color: #1f1f1f;
+  border-color: #444;
+}
+
+body.dark-mode .repo-name {
+  color: #90caf9;
+}
+
+body.dark-mode .repo-description {
+  color: #ccc;
+}
+
+body.dark-mode .repo-stars {
+  color: #aaa;
+}
+
+
+@media (max-width: 480px) {
+  .search-input {
+    font-size: 0.95rem;
+  }
+
+  .search-button,
+  .dark-toggle-button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .repo-card {
+    padding: 0.8rem;
+  }
+
+  .repo-name {
+    font-size: 1rem;
+  }
+
+  .repo-description {
+    font-size: 0.85rem;
+  }
+
+  .repo-stars {
+    font-size: 0.75rem;
+  }
+}
