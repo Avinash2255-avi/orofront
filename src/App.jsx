@@ -17,6 +17,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const reposPerPage = 5;
 
+  // Toggle dark mode
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
@@ -28,20 +29,19 @@ function App() {
     setError('');
     setUserData(null);
     setRepos([]);
-    setCurrentPage(1); 
-
-    const headers = {
-      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-      Accept: 'application/vnd.github+json',
-    };
+    setCurrentPage(1); // Reset pagination
 
     try {
-      const userResponse = await fetch(`https://api.github.com/users/${username}`, { headers });
-      if (!userResponse.ok) throw new Error('User not found or API limit reached');
+      const userResponse = await fetch(`https://api.github.com/users/${username}`);
+      if (userResponse.status === 403) throw new Error('API rate limit exceeded. Try again later.');
+      if (!userResponse.ok) throw new Error('User not found');
+
       const user = await userResponse.json();
 
-      const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, { headers });
+      const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
+      if (reposResponse.status === 403) throw new Error('API rate limit exceeded. Try again later.');
       if (!reposResponse.ok) throw new Error('Failed to fetch repositories');
+
       const reposData = await reposResponse.json();
 
       const sortedRepos = reposData.sort((a, b) => b.stargazers_count - a.stargazers_count);
@@ -55,6 +55,7 @@ function App() {
     }
   }, []);
 
+  // Pagination logic
   const totalPages = Math.ceil(repos.length / reposPerPage);
   const indexOfLastRepo = currentPage * reposPerPage;
   const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
