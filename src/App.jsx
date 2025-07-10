@@ -17,7 +17,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const reposPerPage = 5;
 
-  // Toggle dark mode
+
   useEffect(() => {
     document.body.classList.toggle('dark-mode', darkMode);
   }, [darkMode]);
@@ -29,7 +29,7 @@ function App() {
     setError('');
     setUserData(null);
     setRepos([]);
-    setCurrentPage(1); // Reset pagination
+    setCurrentPage(1); 
 
     try {
       const userResponse = await fetch(`https://api.github.com/users/${username}`);
@@ -55,7 +55,7 @@ function App() {
     }
   }, []);
 
-  // Pagination logic
+  
   const totalPages = Math.ceil(repos.length / reposPerPage);
   const indexOfLastRepo = currentPage * reposPerPage;
   const indexOfFirstRepo = indexOfLastRepo - reposPerPage;
